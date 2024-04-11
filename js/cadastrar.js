@@ -9,28 +9,50 @@ document
             descricao: form.descricao.value,
             pontos : form.pontos.value
         }
-        validar(tarefa)
-        console.log(tarefa)
+        
+        if(validar(tarefa)){
+            console.log(tarefa)
+            let tarefas = JSON.parse( localStorage.getItem("tarefas") ) || []
+            tarefas.push(tarefa)
+            localStorage.setItem("tarefas", JSON.stringify(tarefas))
+
+            window.location = "/"
+        }
 
 })
 
 function validar(tarefa){
+    let valid = true
     limparErros()
 
     if (tarefa.titulo === ""){
         document.querySelector("#titulo").classList.add("is-error")
         document.querySelector("#titulo-error").innerText = "O título é obrigatório"
+        valid = false
     }
     if (tarefa.descricao === ""){
         document.querySelector("#descricao").classList.add("is-error")
         document.querySelector("#descricao-error").innerText = "A descrição é obrigatória"
+        valid = false
     }
+    if (tarefa.pontos <= 0){
+        document.querySelector("#pontos").classList.add("is-error")
+        document.querySelector("#pontos-error").innerText = "Pontos devem ser maior que zero"
+        valid = false
+    }
+
+    return valid
 }
 
-function limparErros(){
-    document.querySelector("#titulo").classList.remove("is-error")
-    document.querySelector("#titulo-error").innerText = ""
 
-    document.querySelector("#descricao").classList.remove("is-error")
-    document.querySelector("#descricao-error").innerText = ""
+
+function limparErros(){
+    document
+        .querySelectorAll(".nes-input.is-error, .nes-textarea.is-error")
+        .forEach( campo => campo.classList.remove("is-error"))
+
+    document
+        .querySelectorAll("span.is-error")
+        .forEach(span => span.innerText = "")
+   
 }
