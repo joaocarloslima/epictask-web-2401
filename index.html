@@ -9,7 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/layout.css">
+    <script src="./js/stats.js" defer></script>
     <script src="./js/carregar.js" defer></script>
+    <script src="./js/apagar.js" defer></script>
+    <script src="./js/editar.js" defer></script>
+
     <title>EpicTask</title>
 </head>
 
@@ -22,8 +26,24 @@
         </a>
     </nav>
 
+    <div class="stats">
+        <div class="nes-container is-rounded is-dark">
+            <p id="total-pendentes">10</p>
+            <span>tarefas pendentes</span>
+        </div>
+        <div class="nes-container is-rounded is-dark">
+            <p id="total-concluidas">10</p>
+            <span>tarefas concluídas</span>
+        </div>
+        <div class="nes-container is-rounded is-dark">
+            <p id="total-pontos">10</p>
+            <span>pontos ganhos</span>
+        </div>
+        
+    </div>
+
     <section id="lista-de-tarefas">
-    
+
     </section>
 
 </body>

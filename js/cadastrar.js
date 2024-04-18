@@ -7,7 +7,8 @@ document
         const tarefa = {
             titulo : form.titulo.value,
             descricao: form.descricao.value,
-            pontos : form.pontos.value
+            pontos : form.pontos.value,
+            status: 0
         }
         
         if(validar(tarefa)){
